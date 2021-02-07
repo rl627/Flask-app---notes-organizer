@@ -8,11 +8,12 @@ we set up the python package in __init__.py to import flask and make a funciton 
 
 # 3. create routes/views
 
-## views.py
+## Creating Blueprints and Views
 
-We store the standard routes for our website, where users can actually go to (e.g. homepage...). the login page will go into auth.py but any other page that the user can access will be put into views.py. This page is a blueprint which meaning it has a bunch of roots inside of it, it has a bunch of urls defined.  
+We store the standard routes for our website in views.py, where users can actually go to (e.g. homepage...). the login page will go into auth.py but any other page that the user can access will be put into views.py. This page is a blueprint which meaning it has a bunch of roots inside of it, it has a bunch of urls defined.  
 
-## auth.py
+We add 'pages' to the blue print which consist of two parts a decorator whichs specifies route and a funciton which returns content (e.g. HTML code)
 
-We also create a blue print here named auth which will serve as the blueprint for the authentication process. 
+## Register blueprints in __init__.py
 
+Now that we have created the routes, we need to import and register these new routes to the web app in the __init__.py file. 
