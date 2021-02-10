@@ -72,6 +72,7 @@ Next we will create out navbar. The code creates a navbar that is collabsable wi
 ```
 
 Next we insert items in our navbar into another div as shown below. 
+
 ```
   <div class="collapse navbar-collapse" id="navbar">
    <div class="navbar-nav">
