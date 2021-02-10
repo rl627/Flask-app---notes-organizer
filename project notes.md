@@ -36,7 +36,9 @@ import bootstrap and define title tag with Jinja. ```{% %}``` acts like a chunk 
 
 #### Scripts
 
-We load some javascript that supplements bootstrap (animations and.... etc). This i always at the bottom ot he body. Things that don't chnage go into static (images, javascript, css).  If we wanted to write own javascript, then we would write a javascript file into the static folder and load with this code ```   
+We load some javascript that supplements bootstrap (animations and.... etc). This i always at the bottom ot he body. Things that don't chnage go into static (images, javascript, css).  If we wanted to write own javascript, then we would write a javascript file into the static folder and load with this code 
+
+```   
 <script 
     type="text/javascript" 
     src="{{ url_for('static', filename='index.js') }}"
