@@ -45,10 +45,38 @@ We load some javascript that supplements bootstrap (animations and.... etc). Thi
 ></script>
 ```
 
-To break this down: whenever we have ``` {{}} ``` it means that ther e some python extpression (variable,expression, funciton) inside that will be evaluated. In this case we call the funciton url_for() which will find the url for our js file and return this as a string to the src argument. 
+To break this down: whenever we have ``` {{  } ``` it means that ther e some python extpression (variable,expression, funciton) inside that will be evaluated. In this case we call the funciton url_for() which will find the url for our js file and return this as a string to the src argument. 
 
 #### navbar
 
+We will just define a bootstrap navbar class. 
 
+```
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+</nav>
+```
 
+Then we will add buttons to navbar. First one is if our screen is small (e.g. mobile device) and we cannot see all buttons then we expand so we see all the buttons. The icon we see is the icon in the middle.
+
+```
+<button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+</button>
+```
+
+Next we will create out navbar. The code creates a navbar that is collabsable with id navbar. 
+
+```
+  <div class="collapse navbar-collapse" id="navbar">
+  </div>
+```
+
+Next we insert items in our navbar into another div as shown below. 
+```
+  <div class="collapse navbar-collapse" id="navbar">
+   <div class="navbar-nav">
+       <!-- INSERT ITEMS -->
+        </div>
+  </div>
+```
 
