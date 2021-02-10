@@ -77,7 +77,20 @@ Next we insert items in our navbar into another div as shown below.
   <div class="collapse navbar-collapse" id="navbar">
    <div class="navbar-nav">
        <!-- INSERT ITEMS -->
-        </div>
+    </div>
   </div>
+```
+
+Lets add some pages!
+
+```
+<div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" id="home" href="/">Home</a>
+          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <a class="nav-item nav-link" id="login" href="/login">Login</a>
+          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+        </div>
+      </div>
 ```
 
