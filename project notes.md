@@ -22,7 +22,7 @@ Now that we have created the routes, we need to import and register these new ro
 
 Right now the pages that we have created and registered routes for (home, login, logout, signup) have just simple HTML which is a function. But typing HTML like this isn't scalable. Now we will build templates into to the >website>templates with Jinja, which is python's version of a templating engine (this allows some templating functionality which is usually in javascript to be done in python).
 
-## base.html
+## 4.1 base.html
 
 The first template we create is 'base.html' which is kind of like the theme of our website. What ever is in this template is what the entire site will look like .. (e.g. navbar, footer, header ...). Then what we will do is to overide parts of the base.html with more specific templates. 
 
@@ -93,4 +93,8 @@ Lets add some pages!
         </div>
       </div>
 ```
+Now that we have created our template, now we need to actually define some HTML documents that actually use this template. Yes, we can render this template but the ploint of a tmeplate is to use it as base for other pages in our website. This is what we will do next and create a home.html using base.html. 
 
+## 4.2 home.html
+
+(36:03) https://www.youtube.com/watch?v=dam0GPOAvVI&t=448s&ab_channel=TechWithTim
