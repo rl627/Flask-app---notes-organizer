@@ -17,3 +17,36 @@ We add 'pages' to the blue print which consist of two parts a decorator whichs s
 ## Register blueprints in __init__.py
 
 Now that we have created the routes, we need to import and register these new routes to the web app in the __init__.py file. 
+
+# 4. Jinja Templating Language & HTML Templates
+
+Right now the pages that we have created and registered routes for (home, login, logout, signup) have just simple HTML which is a function. But typing HTML like this isn't scalable. Now we will build templates into to the >website>templates with Jinja, which is python's version of a templating engine (this allows some templating functionality which is usually in javascript to be done in python).
+
+## base.html
+
+The first template we create is 'base.html' which is kind of like the theme of our website. What ever is in this template is what the entire site will look like .. (e.g. navbar, footer, header ...). Then what we will do is to overide parts of the base.html with more specific templates. 
+
+### Head 
+
+import bootstrap and define title tag with Jinja. ```{% %}``` acts like a chunk in which python code can be inserted. In this case we will insert python  block end block (```{% block title%}Home{% endblock %}```) which says that any blocks that we have defined in this base template which in this case is title will be inherited by children template and can be overided/changed. 
+
+
+
+### Body
+
+#### Scripts
+
+We load some javascript that supplements bootstrap (animations and.... etc). This i always at the bottom ot he body. Things that don't chnage go into static (images, javascript, css).  If we wanted to write own javascript, then we would write a javascript file into the static folder and load with this code ```   
+<script 
+    type="text/javascript" 
+    src="{{ url_for('static', filename='index.js') }}"
+></script>
+```
+
+To break this down: whenever we have ``` {{}} ``` it means that ther e some python extpression (variable,expression, funciton) inside that will be evaluated. In this case we call the funciton url_for() which will find the url for our js file and return this as a string to the src argument. 
+
+#### navbar
+
+
+
+
