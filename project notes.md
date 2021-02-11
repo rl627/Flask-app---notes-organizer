@@ -45,7 +45,7 @@ We load some javascript that supplements bootstrap (animations and.... etc). Thi
 ></script>
 ```
 
-To break this down: whenever we have ``` {{  } ``` it means that ther e some python extpression (variable,expression, funciton) inside that will be evaluated. In this case we call the funciton url_for() which will find the url for our js file and return this as a string to the src argument. 
+To break this down: whenever we have ``` {{  }} ``` it means that ther e some python extpression (variable,expression, funciton) inside that will be evaluated. In this case we call the funciton url_for() which will find the url for our js file and return this as a string to the src argument. 
 
 #### navbar
 
@@ -95,6 +95,46 @@ Lets add some pages!
 ```
 Now that we have created our template, now we need to actually define some HTML documents that actually use this template. Yes, we can render this template but the ploint of a tmeplate is to use it as base for other pages in our website. This is what we will do next and create a home.html using base.html. 
 
-## 4.2 home.html
+## 4.2 Extending base.html and rendering child templates
+
+
+
+### Extend base.html and render
+
+The first thing we do is to indicate that this template is an extension of home.html by add the following ot the top of page. THen we can use our block fnuction to override the title of our page. For now we will overirde with Home2, so we can see the difference. 
+
+```
+{% extends "base.html" %} 
+{% block title %}Home2{% endblock %} 
+```
+
+
+The next key step now that we have extended base.html tempalte with home.html is to render this child in our website. We go to views.py which is the file that defines all the non-auth pages of website and import another funciton from flask which renders template, then use this functiont o call our child template to render
+
+```
+@views.route('/')  
+def home():
+    return render_template("home.html")
+```
+
+### Add content block to base.html
+
+Indeed it works! The next step is to insert a block into our base.html which we can put content on the screen. In the code below, we put the content in a container class which is the most basic layout element that keeps things floating away from edges. 
+
+```
+<div class="container">{% block content %} {% endblock %}</div>
+```
+
+Then by adding to the block name content in the child template will overirde this and display stuff when the child is rendered. For example into, home.html we can add the following: 
+
+```
+{% block content %}
+<h1>THIS IS THE HOME PAGE</h1>
+{% endblock %} 
+```
+
+We can repeat this to create child templates for all our other pages. THen render them in auth.py.
+
+## 4.3 Passing values between templates
 
 (36:03) https://www.youtube.com/watch?v=dam0GPOAvVI&t=448s&ab_channel=TechWithTim
