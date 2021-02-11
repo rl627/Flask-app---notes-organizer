@@ -137,4 +137,33 @@ We can repeat this to create child templates for all our other pages. THen rende
 
 ## 4.3 Passing values between templates
 
+One of the great things that is great about this jinja templating language is that we can pass variables or values to all of the templates and that will allow us to use those values inside of those templates. For a first example, we can pass a variable to login.html on our backend (auth.py) by naming a variablea nd giving it a value:
+
+```
+render_template("login.html", text = "testing")
+```
+
+In this way we can access the varible text inside of login.html. with ```{{text}} ```
+
+This is how we pass values to our templates, we simply define them as some variable. We can also pass multiple variables. One useful use of this is if we pass a boolean and then use an conditional in out tempalte. 
+
+```
+render_template("login.html", text = "testing", boolean = True)
+```
+
+Then in the template.
+
+```
+{% if boolean == True %}
+Yes it is true!
+{% else %}
+No it is not true!
+{% endif %}
+```
+
+we can do a bunch of conditions such as elif or for loops. 
+
+
+
+
 (36:03) https://www.youtube.com/watch?v=dam0GPOAvVI&t=448s&ab_channel=TechWithTim
