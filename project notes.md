@@ -164,6 +164,19 @@ No it is not true!
 we can do a bunch of conditions such as elif or for loops. 
 
 
+## 4.4 Develop the sign-up.html and login.html pages
 
 
-(36:03) https://www.youtube.com/watch?v=dam0GPOAvVI&t=448s&ab_channel=TechWithTim
+Lest do this so we can allow users to sign up and start working on the backend and working with databases... and other fun stuff. This is all done in bootstrap, relatively straight forward.
+
+The on new thing is when we are creating the for tag we use POST as the method, which we will learn about later. 
+
+```
+ <form method = "POST"></form>
+```
+
+
+# 5. Handling the Form
+
+
+(54:17) https://www.youtube.com/watch?v=dam0GPOAvVI&t=448s&ab_channel=TechWithTim
