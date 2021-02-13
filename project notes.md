@@ -176,7 +176,76 @@ The on new thing is when we are creating the for tag we use POST as the method, 
 ```
 
 
-# 5. Handling the Form
+# 5. HTTP Requests
+
+## 5.1 Intro
+
+Now that we have our HTML sign up and sign in pages done. We can focus on the backend, what happens when we hit the submit button in our two forms? Right now it displays an error: "Method Not Allowed - The method is not allowed for the requested URL."
+
+This is a a great time to talk about HTTP Requests. We use HTTP (Hyper Text Transfer Protocol).
+
+At any point while we are on our site we are at a route which is a function in either auth.py or view.py. So far everything works, most routes are GET request, which just gets HTML and renders, but once we click a button things break because the clicking of a submit button will create  POST request (as defined in the form ``` <form method = "POST"> </form>```) to the server and respond to us or do something with that post request. Since we have not created much of back end, our server has no idea what to do and just throws an error.
+
+* GET request/method: retrieves information
+* POST request/method: updating or creating something
+* Other HTTP request: UPDATE, DELETE, PUT
+
+Next stop to fix this is to make sure our server can actually accept this POST request. 
+
+## 5.2 Handling POST Requests
+
+Now since we have two submit buttons, we want to make sure that our login and sign-up routes can accept POST requestions! To do that we need to define something with our routes in auth.py.
+
+```
+@auth.route('/login', methods = ['GET','POST'])
+@auth.route('/sign-up', methods = ['GET','POST'])
+```
+
+By default the routes only accespt GET HTTP request, but now by explicitly specifying the the methods as both GET and POST. Now out login page and sign up pages don't throw errors when we hit submit. TO be specific, when we go to the page via url change that is aa GET request. When we hit the submit button which is within a form that has POST method specified, that is POST request. 
+
+## 5.3 Getting information from HTTP request to server
+
+To get informatino in form into server, first thing is we need to importat the 'request' funciton from flask. Then we add to the route function 
+
+```
+def login():
+    data = request.form
+    print(data)
+    return render_template("login.html")
+```
 
 
-(54:17) https://www.youtube.com/watch?v=dam0GPOAvVI&t=448s&ab_channel=TechWithTim
+We assign the HTTP request information with the attribute form to the variable data then print data. If tehre is no form attribute (e.g. lgoin refresh) there is no data sent but if we hit submitt then we print out the email and password. Using request, the next thing we do is to apply this to the sign-up page and get users info , store that ona  DB and to create user account. 
+
+In the previous example, we did not differential between GET and POST HTTP request, but realistically, we only care about data flow when a submit button or POST request is made. In the sign-up route, we can modify the condition to only collect info when the HTTP request is a GET reqest.
+
+```
+@auth.route('/sign-up', methods = ['GET','POST'])
+def sign_up():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        firstName = request.form.get('firstName')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+    return render_template("sign-up.html")
+```
+
+In the code above, if the HTTP request is a POST we use the get function to get quite a few pieces of information and store them in variables.
+
+Before we create users let's just make some basic data checks in python to make sure the values are valid.
+
+```
+        if len(email) < 4:
+            pass
+        elif len(firstName) < 2:
+            pass
+        elif len(password1) != password2:
+            pass
+        else:
+            #add user to database
+            pass
+```
+
+So before we make user, if this info is not valid we should let the user know! The next section will deal with how to use "message flashing" to alert the users. Before we start looking into databases. 
+
+(1:03:12) https://www.youtube.com/watch?v=dam0GPOAvVI&t=448s&ab_channel=TechWithTim
